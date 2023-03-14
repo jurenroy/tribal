@@ -8,7 +8,7 @@
     <div id="id-info">
       <h1>ID Card</h1>
       <div class="image-cropper">
-        <img id="image-element" src="placeholder-image.jpg" alt="Photo" width="200" height="200">
+        <img id="image-file" alt="Photo" width="200" height="200">
       </div>
       <p>ID Number: <span id="id-number"></span></p>
       <p>Name: <span id="name"></span></p>
@@ -23,8 +23,13 @@
       <p>Contact Number: <span id="contact-number"></span></p>
     </div>
     
-    <button id="back-button">Back</button>
+    <div id="button-group">
+      <button id="back-button">Back</button>
+      <button id="upload-button">Upload Picture</button>
+    </div>
     
+
+    <script src="https://unpkg.com/cropperjs/dist/cropper.js"></script>
     <script>
       // Get the query string from the URL
       const queryString = window.location.search;
@@ -39,7 +44,7 @@
       const address = params.get("address");
       const contactPerson = params.get("contact-person");
       const contactNumber = params.get("contact-number");
-      const imageFile = params.get("image");      
+      const imageFile = params.get("image-file");
     
       // Set the form data to the HTML elements on the page
       document.getElementById("id-number").textContent = idNumber;
@@ -51,13 +56,38 @@
       document.getElementById("contact-number").textContent = contactNumber;
     
       // Set the image file to the image element on the page
-      const imgElement = document.getElementById('image-element');
+      const imgElement = document.getElementById('image-file');
       imgElement.src = imageFile;
     
       // Add a click event listener to the back button to navigate back to the first page
       document.getElementById("back-button").addEventListener("click", () => {
         window.history.back();
       });
-    </script>
+    
+      // Add a change event listener to the image upload input to read and display the selected image
+      document.getElementById("upload-picture").addEventListener("change", (event) => {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+    
+        reader.onload = (event) => {
+          const image = new Image();
+          image.src = event.target.result;
+    
+          image.onload = () => {
+            // Resize the image to fit inside the image cropper
+            const canvas = document.createElement('canvas');
+            const maxDimension = Math.max(image.width, image.height);
+            canvas.width = canvas.height = maxDimension;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(image, (maxDimension - image.width) / 2, (maxDimension - image.height) / 2);
+    
+            // Set the cropped image as the source of the image element
+            imgElement.src = canvas.toDataURL();
+          };
+        };
+    
+        reader.readAsDataURL(file);
+      });
+    </script>    
   </body>
-</html
+</html>

@@ -7,7 +7,7 @@ backButton.addEventListener('click', () => {
 });
 
 ipcRenderer.on('form-data', (event, formData) => {
-  const { idNumber, name, datuName, mobileNumber, address, contactPerson, contactNumber, imagePath } = formData;
+  const { idNumber, name, datuName, mobileNumber, address, contactPerson, contactNumber, imageFile } = formData;
 
   document.querySelector('#id-number').value = idNumber;
   document.querySelector('#name').value = name;
@@ -16,5 +16,5 @@ ipcRenderer.on('form-data', (event, formData) => {
   document.querySelector('#address').value = address;
   document.querySelector('#contact-person').value = contactPerson;
   document.querySelector('#contact-number').value = contactNumber;
-  document.querySelector('#uploaded-image').src = `file://${imagePath}`;
+  document.querySelector('#image-file').src = `file://${imageFile}`;
 });

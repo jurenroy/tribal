@@ -36,18 +36,23 @@ form {
     width: 3.7in;
     height: 5.17in;
     border: 1px solid black;
-    padding: 0.5in;
     display: inline-block;
     vertical-align: top;
+    background-image: url('front.png');
+    background-size: 100%; /* adjust image size to fit the div */
+    background-position: center; /* position image in the center */
+    
   }
 
   #contact-info {
     width: 3.7in;
     height: 5.17in;
     border: 1px solid black;
-    padding: 0.5in;
     display: inline-block;
     vertical-align: top;
+    background-image: url('back.png');
+    background-size: 100%; /* adjust image size to fit the div */
+    background-position: center; /* position image in the center */
   }
   #id-info img {
     border-radius: 100px;
