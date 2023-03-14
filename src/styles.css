@@ -1,0 +1,72 @@
+form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  label {
+    flex-basis: 30%;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: black;
+    font-weight: bold;
+  }
+  
+  input[type=text],
+  input[type=file] {
+    flex-basis: 65%;
+    padding: 10px;
+    border-radius: 35px;
+    border-color: black;
+    margin-bottom: 10px;
+    width: 10px; /* set the width to 80% */
+    height: 10px; /* set the height to 40px */
+  }
+  
+  button {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+  }
+  #id-info {
+    width: 3.7in;
+    height: 5.17in;
+    border: 1px solid black;
+    padding: 0.5in;
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  #contact-info {
+    width: 3.7in;
+    height: 5.17in;
+    border: 1px solid black;
+    padding: 0.5in;
+    display: inline-block;
+    vertical-align: top;
+  }
+  #id-info img {
+    border-radius: 100px;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+  }
+  .image-cropper {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 100%;
+    margin: 0 auto;
+    border: 10px solid #fff;
+    box-shadow: 0px 0px 10px #555;
+  }
+  .image-cropper img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
