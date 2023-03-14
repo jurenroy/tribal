@@ -56,18 +56,20 @@ form {
   }
   #id-info img {
     border-radius: 100px;
-    width: 200px;
-    height: 200px;
+    width: 120px;
+    height: 120px;
     object-fit: cover;
+    margin-top: 130;
+    margin-left: 113;
   }
   .image-cropper {
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
     position: relative;
     overflow: hidden;
     border-radius: 100%;
     margin: 0 auto;
-    border: 10px solid #fff;
+    border: 2px solid #fff;
     box-shadow: 0px 0px 10px #555;
   }
   .image-cropper img {

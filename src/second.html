@@ -6,17 +6,15 @@
   </head>
   <body>
     <div id="id-info">
-      <h1>ID Card</h1>
-      <div class="image-cropper">
-        <img id="image-file" alt="Photo" width="200" height="200">
-      </div>
+
       <p>ID Number: <span id="id-number"></span></p>
+      <img id="image-file" src="juren.png">      
       <p>Name: <span id="name"></span></p>
       <p>Datu Name: <span id="datu-name"></span></p>
     </div>
 
     <div id="contact-info">
-      <h1>Contact Information</h1>
+      <h1>MEMBER DATA</h1>
       <p>Mobile Number: <span id="mobile-number"></span></p>
       <p>Address: <span id="address"></span></p>
       <p>Contact Person: <span id="contact-person"></span></p>
@@ -26,9 +24,12 @@
     <div id="button-group">
       <button id="back-button">Back</button>
       <button id="upload-button">Upload Picture</button>
+      <input id="select-img" type="file" accept="image/jpeg, image/png, image/gif">
+      <button onclick = "uploadPic()" id = "upload-img">Upload Image</button>
     </div>
     
 
+    
     <script src="https://unpkg.com/cropperjs/dist/cropper.js"></script>
     <script>
       // Get the query string from the URL
@@ -65,29 +66,37 @@
       });
     
       // Add a change event listener to the image upload input to read and display the selected image
-      document.getElementById("upload-picture").addEventListener("change", (event) => {
-        const file = event.target.files[0];
-        const reader = new FileReader();
-    
-        reader.onload = (event) => {
-          const image = new Image();
-          image.src = event.target.result;
-    
-          image.onload = () => {
-            // Resize the image to fit inside the image cropper
-            const canvas = document.createElement('canvas');
-            const maxDimension = Math.max(image.width, image.height);
-            canvas.width = canvas.height = maxDimension;
-            const ctx = canvas.getContext('2d');
-            ctx.drawImage(image, (maxDimension - image.width) / 2, (maxDimension - image.height) / 2);
-    
-            // Set the cropped image as the source of the image element
+document.getElementById("upload-button").addEventListener("click", (event) => {
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = 'image/*';
+  input.onchange = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      const image = new Image();
+      image.src = reader.result;
+      image.onload = () => {
+        const cropper = new Cropper(image, {
+          aspectRatio: 1 / 1,
+          crop(event) {
+            const canvas = cropper.getCroppedCanvas({width: 200, height: 200});
             imgElement.src = canvas.toDataURL();
-          };
-        };
-    
-        reader.readAsDataURL(file);
-      });
+          },
+        });
+      };
+    };
+  };
+  input.click();
+});
+    const selectImg = document.querySelector("#select-img")
+    const uploadImg = document.querySelector("#upload-img")
+    const img = document.querySelector("img")
+    function uploadPic(){
+    selectImg.click();
+    }
+
     </script>    
   </body>
 </html>
