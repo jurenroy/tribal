@@ -41,7 +41,7 @@ form {
     background-image: url('front.png');
     background-size: 100%; /* adjust image size to fit the div */
     background-position: center; /* position image in the center */
-    
+    text-align: center; /* center text horizontally */    
   }
 
   #contact-info {
@@ -59,9 +59,11 @@ form {
     width: 120px;
     height: 120px;
     object-fit: cover;
-    margin-top: 130;
-    margin-left: 113;
+    margin-top: 179px;
+    margin-right: 9.5px;
+    box-shadow: inset 0px 0px 20px 10px rgba(228, 193, 72, 1);
   }
+  
   .image-cropper {
     width: 100px;
     height: 100px;
@@ -72,8 +74,82 @@ form {
     border: 2px solid #fff;
     box-shadow: 0px 0px 10px #555;
   }
+  
   .image-cropper img {
     display: block;
     width: 100%;
     height: auto;
   }
+  
+  #select-img {
+    display: none;
+  }
+  
+  .image-wrapper {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .image-wrapper img {
+    border-radius: 100px;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    margin: 0 auto;
+  }
+  
+  .shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 100px;
+    width: 120px;
+    height: 120px;
+    margin-top: 179px;
+    margin-left: 69px;
+    box-shadow: inset 0 0 20px 10px rgba(228, 193, 72, 1);
+  }
+  
+  #image-file {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background: radial-gradient(ellipse at center, rgba(213, 199, 81, 0.8) 10%, rgba(0, 0, 0, 0.3) 70%, rgba(0, 0, 0, 0) 90%);
+    mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.8) 50%, rgba(0, 0, 0, 0.8) 60%, rgba(0, 0, 0, 0) 70%);
+    -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.8) 50%, rgba(0, 0, 0, 0.8) 60%, rgba(0, 0, 0, 0) 70%);
+  }
+
+  @font-face {
+    font-family: "Rockwell Extra Bold";
+    src: url("Rockwell\ Extra\ Bold.ttf");
+  }
+  
+  #id-number {
+    font-family: "Rockwell Extra Bold";
+    font-size: 17px;
+    font-weight: bold;
+    color: #0ef617;
+    text-shadow: 0 0 2px black;
+    -webkit-text-stroke: 1.3px black;
+    letter-spacing: -2px;
+    float: right;
+    margin-top: -115px;
+    margin-left: 240px;
+  }
+  
+  #name {
+    font-family: "Rockwell Extra Bold";
+    font-size: 18px;
+    margin-top: -10px;
+  }
+  
+  #datu-name {
+    font-family: "Rockwell Extra Bold";
+    font-size: 20px;
+    margin-top: -5px;
+    color: #0ef617;
+    text-shadow: 0 0 2px black;
+    -webkit-text-stroke: 1.3px black;
+    letter-spacing: -2px;
+  }
+  

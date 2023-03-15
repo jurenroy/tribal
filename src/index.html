@@ -34,35 +34,6 @@
       <button type="submit" value="Submit" id="submit-button">Submit</button>
     </form>
 
-    <script>
-      const myForm = document.getElementById('my-form');
-      myForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-        const formData = new FormData(myForm);
-
-        // Get the values of the form inputs and encode them for the URL
-        const idNumber = encodeURIComponent(formData.get('id-number'));
-        const name = encodeURIComponent(formData.get('name'));
-        const datuName = encodeURIComponent(formData.get('datu-name'));
-        const mobileNumber = encodeURIComponent(formData.get('mobile-number'));
-        const address = encodeURIComponent(formData.get('address'));
-        const contactPerson = encodeURIComponent(formData.get('contact-person'));
-        const contactNumber = encodeURIComponent(formData.get('contact-number'));
-        
-        // Get the image file from the input element
-        const imageFile = document.getElementById('image-file').files[0];
-        const reader = new FileReader();
-
-        // When the image is loaded, encode it as a data URL and add it to the URL string
-        reader.onload = function(event) {
-          const imageUrl = encodeURIComponent(event.target.result);
-          const url = `second.html?id-number=${idNumber}&name=${name}&datu-name=${datuName}&mobile-number=${mobileNumber}&address=${address}&contact-person=${contactPerson}&contact-number=${contactNumber}&image-file=${imageFile}`;
-          window.location.href = url;
-        };
-
-        // Read the image file as a data URL
-        reader.readAsDataURL(imageFile);
-      });
-    </script>
+    <script src="my-form-script.js"></script>
   </body>
 </html>
