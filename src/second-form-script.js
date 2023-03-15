@@ -31,42 +31,36 @@ document.getElementById("back-button").addEventListener("click", () => {
   window.history.back();
 });
 
-// Add a change event listener to the image upload input to read and display the selected image
-document.getElementById("upload-button").addEventListener("click", (event) => {
-const input = document.createElement('input');
-input.type = 'file';
-input.accept = 'image/*';
-input.onchange = (e) => {
-const file = e.target.files[0];
-const reader = new FileReader();
-reader.readAsDataURL(file);
-reader.onload = () => {
-const image = new Image();
-image.src = reader.result;
-image.onload = () => {
-  const cropper = new Cropper(image, {
-    aspectRatio: 1 / 1,
-    crop(event) {
-      const canvas = cropper.getCroppedCanvas({width: 200, height: 200});
-      imgElement.src = canvas.toDataURL();
-    },
-  });
-};
-};
-};
-input.click();
-});
 const selectImg = document.querySelector("#select-img")
 const uploadImg = document.querySelector("#upload-img")
 const img = document.querySelector("img")
+
 function uploadPic(){
-selectImg.click();
+  selectImg.click();
 }
+
 selectImg.addEventListener("change", (event) => {
-const file = event.target.files[0];
-const reader = new FileReader();
-reader.readAsDataURL(file);
-reader.onload = () => {
-  img.src = reader.result;
-};
+  const file = event.target.files[0];
+  const reader = new FileReader();
+  reader.readAsDataURL(file);
+  reader.onload = () => {
+    img.src = reader.result;
+  };
+});
+
+// Add a click event listener to the download button
+document.getElementById("download-button").addEventListener("click", () => {
+  // Trigger the click event of the hidden upload button to get the latest image data
+  uploadImg.click();
+});
+
+// Add a change event listener to the hidden upload button
+uploadImg.addEventListener("change", () => {
+  // Get the latest image data from the image element
+  const canvas = document.createElement('canvas');
+  const context = canvas.getContext('2d');
+  canvas.width = img.naturalWidth;
+  canvas.height = img.naturalHeight;
+  context.drawImage(img, 0, 0);
+  imageData = canvas.toDataURL('image/png');
 });

@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8">
     <title>My Electron App - Second Page</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="second-style.css">
   </head>
   <body>
     <div id="id-info">
@@ -16,7 +16,7 @@
     </div>
 
     <div id="contact-info">
-      <h1>MEMBER DATA</h1>
+      <h2>MEMBER DATA</h2>
       <p>Mobile Number: <span id="mobile-number"></span></p>
       <p>Address: <span id="address"></span></p>
       <p>Contact Person: <span id="contact-person"></span></p>
@@ -25,14 +25,16 @@
     
     <div id="button-group">
       <button id="back-button">Back</button>
-      <button id="upload-button">Upload Picture</button>
       <input id="select-img" type="file" accept="image/jpeg, image/png, image/gif">
       <button onclick = "uploadPic()" id = "upload-img">Upload Image</button>
+      <button id="download-button">Download Image</button>
     </div>
     
 
     
     <script src="https://unpkg.com/cropperjs/dist/cropper.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="download.js"></script>   
     <script src="second-form-script.js"></script>   
   </body>
 </html>
